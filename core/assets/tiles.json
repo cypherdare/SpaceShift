@@ -1,0 +1,70 @@
+// @formatter:off
+{
+  data: {
+    standardTiles: [
+      { sprite: {regionName: "tileA"}, includeFlipped: true },
+      { sprite: {regionName: "tileB"}, includeFlipped: true },
+      { sprite: {regionName: "tileC"}, includeFlipped: true },
+      { sprite: {regionName: "tileD"}, includeFlipped: true },
+      { sprite: {regionName: "tileE"}, includeFlipped: true },
+      { sprite: {regionName: "tileF"}, includeFlipped: true },
+      { sprite: {regionName: "tileO"}, includeFlipped: true },
+      { sprite: {regionName: "tileP"}, includeFlipped: true }
+    ],
+    healthPickupTiles: [
+      { sprite: {regionName: "healthR", frameTime: 0.25, playMode: LOOP},
+        glowSpot: { x: 11, y: 7.5, height: 55, width: 55, glowColor: #20202000, lightColor: #ffffffff, glowSizeFraction: 0.25} }
+    ],
+    healthPickup: [
+      { sprite: {regionName: "health-pickup"} }
+    ],
+    stepsPickupTiles: [
+      { sprite: {regionName: "tileP"} }
+    ],
+    stepsPickup: [
+      { sprite: {regionName: "steps-pickup", frameTime: 0.13, playMode: LOOP_PINGPONG} }
+    ],
+    trapTiles: [
+      { sprite: {regionName: "trapK"}, light: {regionName: "lightK"} }
+    ],
+    ladderTiles: [
+      { sprite: {regionName: "ladderL", frameTime: 0.1}, includeFlipped: true, isLadder: true }
+    ],
+    ladderBottomTiles: [
+      { sprite: {regionName: "ladderBottomM", frameTime: 0.1}, includeFlipped: true, isLadder: true }
+    ],
+    ladderTopTiles: [
+      { sprite: {regionName: "ladderTopN", frameTime: 0.1}, includeFlipped: true, isLadder: true }
+    ],
+    obstacleTiles: [
+      { sprite: {regionName: "obstacleH", frameTime: 0.15, playMode: LOOP_PINGPONG}, includeFlipped: true,
+        glowSpot: { x: 7.5, y: 13.5, height: 70, width: 70, glowColor: #91763400, lightColor: #ffd05fff, glowSizeFraction: 0.5} },
+      { sprite: {regionName: "obstacleG"}, light: {regionName: "lightG"} }
+    ],
+    airlockTile: [ //sprites defined in sprites.json
+      { glowSpot: { x: 8, y: 36, height: 70, width: 70, glowColor: #4f7c9f00, lightColor: #82c9ffff, glowSizeFraction: 0.2} }
+    ],
+    switchUnpressedTile: [
+      { sprite: {regionName: "switch-unpressed"},
+        glowSpot: { x: 3, y: 12, height: 90, width: 90, glowColor: #b5832200, lightColor: #ffc85fff, glowSizeFraction: 0.5} }
+    ],
+    switchPressedTile: [
+      { sprite: {regionName: "switch-pressed"},
+        glowSpot: { x: 3, y: 12, height: 90, width: 90, glowColor: #34913d00, lightColor: #5fff6aff, glowSizeFraction: 0.5} }
+    ],
+    secondarySwitchUnpressedTile: [
+      { sprite: {regionName: "switch-secondary-unpressed"},
+        glowSpot: { x: 3, y: 15, height: 90, width: 90, glowColor: #9f4f4f00, lightColor: #ff8282ff, glowSizeFraction: 0.5} }
+    ],
+    secondarySwitchPressedTile: [
+      { sprite: {regionName: "switch-secondary-pressed"} }
+    ],
+    sleepPod: [
+      { sprite: {regionName: "sleep-pod", frameTime: 0.15, playMode: LOOP },
+        light: {regionName: "sleep-pod-light" },
+        glowSpot: { x: 6.5, y: 10, height: 70, width: 70, glowColor: #4f829f00, lightColor: #52bcffff, glowSizeFraction: 0.4}
+      }
+    ]
+
+  }
+}

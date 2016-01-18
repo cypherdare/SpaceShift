@@ -1,0 +1,155 @@
+// @formatter:off
+{
+  data: {
+    titleLogo: {
+      regionName: "title-logo", frameTime: 0.10, playMode: LOOP
+    },
+    playerIdle: {
+      regionName: "player-idle", frameTime: 0.05, originMode: FeetCenterTile, playMode: LOOP
+    },
+    playerWalk: {
+      regionName: "player-walk", frameTime: 0.10, originMode: FeetCenterTile, playMode: LOOP
+    },
+    playerAttack: {
+      regionName: "player-attack", frameTime: 0.015, originMode: FeetCenterTile, playMode: NORMAL
+    },
+    playerLadderIdle: {
+      regionName: "player-ladder-idle", frameTime: 0.05, originMode: FeetCenterTile, playMode: LOOP
+    },
+    playerLadderClimb: {
+      regionName: "player-ladder-climb", frameTime: 0.2, originMode: FeetCenterTile, playMode: LOOP
+    },
+    playerHurt: {
+      regionName: "player-hurt", originMode: FeetCenterTile
+    },
+    playerDead: {
+      regionName: "player-dead", customOrigin: {x: 13, y: 13}
+    },
+    playerFloatIdle: {
+      regionName: "player-float-idle", frameTime: 0.05, originMode: CenterTile, playMode: LOOP
+    },
+    playerFloatSideways: {
+      regionName: "player-float-sideways", originMode: CenterTile
+    },
+    playerFloatUp: {
+      regionName: "player-float-up", originMode: CenterTile
+    },
+    playerFloatDown: {
+      regionName: "player-float-down", originMode: CenterTile
+    },
+    playerFloatAttackSideways: {
+      regionName: "player-float-attack-sideways", originMode: CenterTile
+    },
+    playerFloatAttackUp: {
+      regionName: "player-float-attack-up", originMode: CenterTile
+    },
+    playerFloatAttackDown: {
+      regionName: "player-float-attack-down", originMode: CenterTile
+    },
+    playerFloatDead: {
+      regionName: "player-float-dead", originMode: CenterTile
+    },
+    playerAirlockBegin: {
+      regionName: "player-airlock-begin", frameTime: 0.10, customOrigin: {x: 13, y: 13}, playMode: NORMAL
+    },
+    playerAirlockMiddle: {
+      regionName: "player-airlock-middle", frameTime: 0.10, customOrigin: {x: 13, y: 13}, playMode: LOOP
+    },
+    playerAirlockEnd: {
+      regionName: "player-airlock-end", frameTime: 0.30, customOrigin: {x: 13, y: 13}, playMode: NORMAL
+    },
+    robot: {
+      regionName: "robot", frameTime: 0.15, originMode: CenterTile, playMode: LOOP
+    },
+    robotDead: {
+      regionName: "robot-explosion", frameTime: 0.15, originMode: CenterTile, playMode: LOOP
+    },
+    chupoofIdle: {
+      regionName: "chupoof-idle", frameTime: 0.20, customOrigin: {x: 13, y: 13}, playMode: LOOP_PINGPONG
+    },
+    chupoofMove: {
+      regionName: "chupoof-move", frameTime: 0.10, customOrigin: {x: 13, y: 13}, playMode: NORMAL
+    },
+    chupoofDead: {
+      regionName: "chupoof-dead", frameTime: 0.10, customOrigin: {x: 13, y: 13}, playMode: NORMAL
+    },
+    chupoofFloatIdle: {
+      regionName: "chupoof-float-idle", frameTime: 0.15, originMode: CenterTile, playMode: LOOP
+    },
+    chupoofFloatSideways: {
+      regionName: "chupoof-float-sideways", frameTime: 0.15, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoofFloatUp: {
+      regionName: "chupoof-float-up", frameTime: 0.05, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoofFloatDown: {
+      regionName: "chupoof-float-down", frameTime: 0.05, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoofFloatDead: {
+      regionName: "chupoof-float-dead", frameTime: 0.15, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof2FloatIdle: {
+      regionName: "chupoof2-float-idle", frameTime: 0.05, originMode: CenterTile, playMode: LOOP_PINGPONG
+    },
+    chupoof2FloatSideways: {
+      regionName: "chupoof2-float-sideways", frameTime: 0.15, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof2FloatUp: {
+      regionName: "chupoof2-float-up", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof2FloatDown: {
+      regionName: "chupoof2-float-down", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof2FloatHurt: {
+      regionName: "chupoof2-float-hurt", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof2FloatDead: {
+      regionName: "chupoof2-float-dead", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof3FloatIdle: {
+      regionName: "chupoof3-float-idle", frameTime: 0.15, originMode: CenterTile, playMode: LOOP_PINGPONG
+    },
+    chupoof3FloatSideways: {
+      regionName: "chupoof3-float-sideways", frameTime: 0.15, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof3FloatUp: {
+      regionName: "chupoof3-float-up", frameTime: 0.15, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof3FloatDown: {
+      regionName: "chupoof3-float-down", frameTime: 0.15, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof3FloatHurt: {
+      regionName: "chupoof3-float-hurt", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    chupoof3FloatDead: {
+      regionName: "chupoof3-float-dead", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    monchuIdle: {
+      regionName: "monchu-idle", frameTime: 0.10, customOrigin: {x: 18, y: 17}, playMode: LOOP
+    },
+    monchuMove: {
+      regionName: "monchu-move", frameTime: 0.10, customOrigin: {x: 18, y: 17}, playMode: NORMAL
+    },
+    monchuFloatIdle: {
+      regionName: "monchu-float-idle", frameTime: 0.10, originMode: CenterTile, playMode: LOOP
+    },
+    monchuFloatMove: {
+      regionName: "monchu-float-move", frameTime: 0.10, originMode: CenterTile, playMode: NORMAL
+    },
+    airlockOpen: {
+      regionName: "airlock", frameTime: 0.10, playMode: NORMAL
+    },
+    airlockClose: {
+      regionName: "airlock", frameTime: 0.10, playMode: REVERSED
+    },
+    airlockStatic: {
+      regionName: "airlock"
+    },
+    trapSparks: {
+      regionName: "trap-sparks", frameTime: 0.10, originMode: CenterTile, playMode: LOOP
+    },
+    trapZap: {
+      regionName: "trap-zap", frameTime: 0.10, originMode: CenterTile, playMode: LOOP
+    },
+  }
+}

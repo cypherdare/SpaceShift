@@ -1,0 +1,44 @@
+// @formatter:off
+{
+  com.badlogic.gdx.graphics.g2d.BitmapFont: {
+      default: { file: shareTechMono.fnt },
+  },
+  com.badlogic.gdx.graphics.Color: {
+	clear: { a: 0, b: 1, g: 1, r: 1 },
+	green: { a: 1, b: 0, g: 1, r: 0 },
+	white: { a: 1, b: 1, g: 1, r: 1 },
+	gray: { a: 1, b: 0.5, g: 0.5, r: 0.5 },
+	blueGray: { a: 1, b: 0.8, g: 0.5, r: 0.5 },
+	red: { a: 1, b: 0, g: 0, r: 1 },
+	black: { a: 1, b: 0, g: 0, r: 0 },
+    buttonUp: { hex: eeeeeeff },
+    buttonDown: { hex: 2faaf1ff }
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+    clear: { name: white, color: { a: 0, b: 1, g: 1, r: 1 } },
+    blueGray: { name: white, color: blueGray },
+    buttonBgUp: { name: hollowRoundRect, color: red },
+    buttonBgDown: { name: shadedRoundRect, color: blueGray },
+    buttonDoneUp: { name: doneButton, color: red },
+    buttonDoneDown: { name: doneButton, color: blueGray },
+    buttonUIUp: { name: button, color: red },
+    buttonUIDown: { name: button, color: blueGray },
+    speechboxTrans: { name: white, color: { a: 0.85, b: 0.075, g: 0.075, r: 0.075 }}
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+    default: { down: buttonBgDown, up: buttonBgUp, pressedOffsetY: -1 },
+    done: { down: buttonDoneDown, up: buttonDoneUp, pressedOffsetY: -1 },
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+    default: { font: default },
+    green: { font: default, fontColor: green },
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+    default: { font: default, fontColor: buttonUp, downFontColor: buttonDown, pressedOffsetY: -1 },
+    done: { down: buttonUIDown, up: buttonUIUp, font: default, fontColor: buttonUp, downFontColor: buttonDown, pressedOffsetY: -1 },
+    clear: {up: clear, font: default, fontColor: white, pressedOffsetY: -2}
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
+    default: {up: clear, font: default, fontColor: white, pressedOffsetY: -2, checkboxOn: checkbox-checked, checkboxOff: checkbox-unchecked }
+  },
+}

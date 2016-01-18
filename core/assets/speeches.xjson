@@ -1,0 +1,96 @@
+{
+  moods: {
+      prologueDialogue: [
+        "happy-calm", "happy-calm", "default", "happy"
+      ],
+      gameOverDialogue: [
+        "sad", "default", "close-call", "angry", "default", "default"
+      ],
+      epilogueDialogue: [
+        "happy-calm", "default", "angry", "default", "no-speak-skeptical", "happy", "happy" //second one is during achievements
+      ]
+    },
+  strings: {
+    prologueDialogue: [
+"Rise and shine, citizen!
+
+You have been in hyper-sleep for
+
+183 Earth-days.
+
+It is your turn to wake and complete your space chores. You are expected to make your rounds of the station.
+",
+
+"Earth's re-terraformation is estimated to be completed in 3.27 Earth-years.
+
+Thank you for your contribution to the survival of the human race during the waiting period!
+",
+
+"I will contact you should any modifications to the usual tasks occur.
+
+
+
+
+
+
+
+",
+
+"A happy space day to you!!! :-)
+
+
+
+
+"
+    ],
+    gameOverDialogue: [
+      "Oh dear. I no longer detect your vital signs!",
+      "I will have to assume you can no longer complete today's chores.",
+      "But don't worry. I will wake the next citizen early and he/she can pick up your slack.",
+      "Anyway, I'm sure it's nothing a little hyper-sleep wouldn't cure."
+      "Here are your accomplishments:"
+    ],
+    epilogueDialoguePart1: [
+"All done, huh?!
+
+I thank you for your adaptibility today, as our routine did not go according to plan. Here are your accomplishments:
+
+
+",
+    ],
+    epilogueDialoguePart2: [
+"
+
+
+Today's incident has unleashed a chupoof outbreak planetside.",
+
+"De-scourge robots have been automatically dispatched.
+
+New estimated time for Earth's re-terraformation is 14.83 years.
+",
+"
+
+
+...
+
+
+...
+
+
+Hmm.
+",
+"Well, time to sleep again.
+
+Hyper-sleep injection incoming. You may feel a bit of a pinch.",
+
+"
+
+Sweet dreams! :-)
+
+
+
+
+"
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+// @formatter:off
+{
+  data: {
+    default: {
+      speaking: {regionName: "face-default-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-default"}
+    },
+    no-speak: {
+      speaking: {regionName: "face-default"},
+      idle: {regionName: "face-default"}
+    },
+    no-speak-skeptical: {
+      speaking: {regionName: "face-skeptical"},
+      idle: {regionName: "face-skeptical"}
+    },
+    no-speak-surprised: {
+      speaking: {regionName: "face-default"},
+      idle: {regionName: "face-default"}
+    },
+    surprised: {
+      speaking: {regionName: "face-default-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-default"}
+    },
+    happy: {
+      speaking: {regionName: "face-happy-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-happy"}
+    },
+    happy-calm: {
+      speaking: {regionName: "face-happy-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-default"}
+    },
+    close-call: {
+      speaking: {regionName: "face-close-call-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-close-call"}
+    },
+    woohoo: {
+      speaking: {regionName: "face-woohoo-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-woohoo"}
+    },
+    skeptical: {
+      speaking: {regionName: "face-skeptical-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-skeptical"}
+    },
+    sad: {
+      speaking: {regionName: "face-sad-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-sad"}
+    },
+    angry: {
+      speaking: {regionName: "face-angry-speak", frameTime: 0.15, playMode: LOOP},
+      idle: {regionName: "face-angry"}
+    },
+  }
+}
