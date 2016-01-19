@@ -7,6 +7,6 @@ uniform mat4 u_projTrans;
 
 void main()
 {
-	v_texCoords = a_texCoord0 / 100.0; //number too big for some GPU's
+	v_texCoords = a_texCoord0; //number too big for some GPU's
 	gl_Position =  u_projTrans * a_position;
 }

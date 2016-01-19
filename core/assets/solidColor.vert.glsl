@@ -10,5 +10,6 @@ uniform mat4 u_projTrans;
 void main()
 {
 	v_texCoords = a_texCoord0;
+	v_alpha = a_color.a;
 	gl_Position =  u_projTrans * a_position;
 }

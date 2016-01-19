@@ -22,8 +22,8 @@ uniform float u_damageIntensity;
 void main()
 {
     vec2 coords = vec2(
-        atan(-v_texCoords.x, -v_texCoords.y) / u_cornerAngle * 0.5 + 0.5,
-       (-length(v_texCoords) * 100.0 - u_sourceBottom) / (u_sourceTop - u_sourceBottom)
+        atan(v_texCoords.x / v_texCoords.y) / u_cornerAngle * 0.5 + 0.5,
+       (-length(v_texCoords) - u_sourceBottom) / (u_sourceTop - u_sourceBottom)
     );
 
 	#ifdef DAMAGE
