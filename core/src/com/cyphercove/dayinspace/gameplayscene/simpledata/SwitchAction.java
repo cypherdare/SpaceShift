@@ -14,11 +14,12 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.simpledata;
 
-import com.badlogic.gdx.utils.*;
-
-public class SpeechData {
-    ObjectMap<String, String[]> strings;
-    ObjectMap<String, String[]> moods;
+public enum SwitchAction {
+    DimLights,
+    TurnGravityOn,
+    TurnGravityOff,
+    UnlockExit,
+    EndGame
 }

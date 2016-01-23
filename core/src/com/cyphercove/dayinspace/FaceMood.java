@@ -17,7 +17,9 @@
 package com.cyphercove.dayinspace;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.cyphercove.dayinspace.shared.Sprite;
 
+/**Designed to be defined in Json, which is why there's an init method instead of a constructor.*/
 public class FaceMood {
     public Sprite speakingSprite, idleSprite;
     private Sprite.Parameters speaking;

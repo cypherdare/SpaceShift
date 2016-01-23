@@ -21,12 +21,11 @@ import com.badlogic.gdx.graphics.glutils.*;
 import com.badlogic.gdx.utils.*;
 
 /**
- * ShaderProgram wrapper that makes it easy to reload the shaders and reapply uniforms while the app is running.
+ * ShaderProgram wrapper that makes it easy to reload the shaders and reapply default uniforms while the app is running.
  */
 public class Shader implements Disposable {
     public static final String VERT_FILE_SUFFIX = ".vert.glsl";
     public static final String FRAG_FILE_SUFFIX = ".frag.glsl";
-
 
     private ShaderProgram program;
     private String vertFileName;

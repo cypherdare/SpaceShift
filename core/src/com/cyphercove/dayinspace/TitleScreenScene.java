@@ -27,12 +27,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.cyphercove.dayinspace.shared.PixelMultipleViewport;
+import com.cyphercove.dayinspace.shared.SpriteWidget;
 
 public class TitleScreenScene implements Disposable {
-
-    private GameMain main;
-    private SpriteBatch batch;
-    private Assets assets;
 
     private ObjectSet<Disposable> disposables = new ObjectSet<>();
     private Stage stage;
@@ -40,9 +38,6 @@ public class TitleScreenScene implements Disposable {
 
 
     public TitleScreenScene(final GameMain main, final Assets assets, SpriteBatch batch) {
-        this.main = main;
-        this.assets = assets;
-        this.batch = batch;
         viewport = new PixelMultipleViewport(600, 400);
         stage = new Stage(viewport, batch);
 

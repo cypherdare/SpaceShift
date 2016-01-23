@@ -14,12 +14,9 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.simpledata;
 
-public enum SwitchAction {
-    DimLights,
-    TurnGravityOn,
-    TurnGravityOff,
-    UnlockExit,
-    EndGame
+public enum PickupType {
+    Health,
+    StepBoost
 }

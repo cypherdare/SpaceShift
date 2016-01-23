@@ -21,7 +21,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.Disposable;
+import com.cyphercove.dayinspace.gameplayscene.simpledata.MusicTrack;
 
+//Hacked in last minute. Ideally, this wouldn't be hard-coded to the three music tracks I used.
 public class MusicManager implements Disposable{
 
     FileHandle ambience, intense, gravity;

@@ -25,6 +25,12 @@ import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.gameplayscene.rendering.Tile;
+import com.cyphercove.dayinspace.loadinghelpers.FaceMoodData;
+import com.cyphercove.dayinspace.loadinghelpers.SpeechData;
+import com.cyphercove.dayinspace.loadinghelpers.SpriteData;
+import com.cyphercove.dayinspace.loadinghelpers.TileData;
+import com.cyphercove.dayinspace.shared.*;
 
 public class Assets implements Disposable{
     public static final String MAIN_ATLAS = "main";
@@ -32,6 +38,11 @@ public class Assets implements Disposable{
     static final String UI_SKIN = "uiskin.json";
     static final String FONT = "shareTechMono";
     public static final String CATALOGUE_NAME = "catalogue.txt";
+
+    //Hard coded to save my time writing loader since audio length not exposed by Gdx.audio
+    public static final float LONG_TEXT_SOUND_DURATION = 1.5f;
+    public static final float LONG_TEXT_SOUND_MIN_DURATION = 1.0f;
+    public static final float SHORT_TEXT_SOUND_MIN_DURATION = 0.4f;
 
     //A is for left and right(when flipped). B is for middle
     Array<Pixmap> typeAMaps, typeBMaps;
@@ -62,8 +73,8 @@ public class Assets implements Disposable{
     public final Shader solidColorShader;
     public final Shader glassShader;
 
-    ObjectMap<String, Sprite> sprites;
-    public ObjectMap<String, Array<Tile>> tiles;
+    public final ObjectMap<String, com.cyphercove.dayinspace.shared.Sprite> sprites;
+    public final ObjectMap<String, Array<Tile>> tiles;
     public TextureRegion white;
     public TextureRegion lightBeam;
     public TextureRegion lightPoint;
@@ -81,22 +92,40 @@ public class Assets implements Disposable{
                 try {
                     return super.readValue(type, elementType, jsonData);
                 } catch (SerializationException e){
-                    if (jsonData.isString()) {
-                        String string = jsonData.asString();
-                        if (type == int.class || type == Integer.class) {
-                            string = string.charAt(0) == '#' ? string.substring(1) : string;
-                            int r = Integer.valueOf(string.substring(0, 2), 16);
-                            int g = Integer.valueOf(string.substring(2, 4), 16);
-                            int b = Integer.valueOf(string.substring(4, 6), 16);
-                            int a = string.length() != 8 ? 255 : Integer.valueOf(string.substring(6, 8), 16);
-                            Integer intValue = (r << 24) | (g << 16) | (b << 8) | a;
+                    if (type == int.class || type == Integer.class) {
+                        if (jsonData.isString()) {
+                            String string = jsonData.asString();
+                            if (string.charAt(0) == '#')
+                                string = string.substring(1);
+                            else if (string.charAt(0) == '0' && (string.charAt(1) == 'x' || string.charAt(1) == 'X'))
+                                string = string.substring(2);
+                            if (string.length() < 8)
+                                return (T) Integer.valueOf(string, 16);
+                            //Integer.valueOf doesn't handle negatives, so split the number
+                            int first = Integer.valueOf(string.substring(0, 4), 16);
+                            int second = Integer.valueOf(string.substring(4, 8), 16);
+                            Integer intValue = (first << 16) | second;
                             return (T) intValue;
                         }
-                    }
+                    } else throw e;
                 }
                 return null;
             }
         };
+
+        //Taken from the Skin class's loader
+        json.setSerializer(Color.class, new Json.ReadOnlySerializer<Color>() {
+            public Color read (Json json, JsonValue jsonData, Class type) {
+                String hex = json.readValue("hex", String.class, (String)null, jsonData);
+                if (hex != null) return Color.valueOf(hex);
+                float r = json.readValue("r", float.class, 0f, jsonData);
+                float g = json.readValue("g", float.class, 0f, jsonData);
+                float b = json.readValue("b", float.class, 0f, jsonData);
+                float a = json.readValue("a", float.class, 1f, jsonData);
+                return new Color(r, g, b, a);
+            }
+        });
+
         boardParameters = json.fromJson(Board.Parameters[].class, Gdx.files.internal("boardParams.json"));
 
 
@@ -127,8 +156,8 @@ public class Assets implements Disposable{
 
         SpriteData spriteData = json.fromJson(SpriteData.class, Gdx.files.internal("sprites.json"));
         sprites = new ObjectMap<>(spriteData.data.size);
-        for (ObjectMap.Entry<String, Sprite.Parameters> entry : spriteData.data.entries()){
-            sprites.put(entry.key, new Sprite(entry.value, mainAtlas));
+        for (ObjectMap.Entry<String, com.cyphercove.dayinspace.shared.Sprite.Parameters> entry : spriteData.data.entries()){
+            sprites.put(entry.key, new com.cyphercove.dayinspace.shared.Sprite(entry.value, mainAtlas));
         }
 
         TileData tileData = json.fromJson(TileData.class, Gdx.files.internal("tiles.json"));
@@ -256,6 +285,12 @@ public class Assets implements Disposable{
                 target.put(file.nameWithoutExtension().replace("DIS_MX_", ""), file);
             }
         }
+    }
+
+    public SpeakingLabel generateSpeakingLabel (CharSequence initialText, String styleName, float charsPerSecond){
+        return new SpeakingLabel(initialText, skin, styleName, charsPerSecond, sfx.get("text"), LONG_TEXT_SOUND_DURATION,
+                LONG_TEXT_SOUND_MIN_DURATION, sfx.get("text_short"), SHORT_TEXT_SOUND_MIN_DURATION
+                );
     }
 
     public void reloadShaders (){

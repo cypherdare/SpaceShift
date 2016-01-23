@@ -14,12 +14,14 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.cyphercove.dayinspace.Assets;
+import com.cyphercove.dayinspace.shared.Sprite;
 
 import static com.cyphercove.dayinspace.Constants.*;
 

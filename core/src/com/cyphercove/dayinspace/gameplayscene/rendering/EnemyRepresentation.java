@@ -14,10 +14,12 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.ObjectMap;
+import com.cyphercove.dayinspace.*;
+import com.cyphercove.dayinspace.shared.Sprite;
 
 import static com.cyphercove.dayinspace.Constants.*;
 
@@ -170,21 +172,24 @@ public class EnemyRepresentation extends EntityActor {
         return "chupoofIdle"; //default should never happen
     }
 
-    private static int alphaScale (int color, float scale){
-        float alpha = (color & 0xff) / 255f * scale;
-        return (color & 0xffffff00) | (int)(alpha * 255);
+    private static int pmaAlphaScale (int color, float scale){
+        float r = ((color & 0xff000000) >>> 24) / 255f * scale;
+        float g = ((color & 0x00ff0000) >>> 16) / 255f * scale;
+        float b = ((color & 0x0000ff00) >>> 8) / 255f * scale;
+        float a = ((color & 0x000000ff)) / 255f * scale;
+        return ((int)(r * 255) << 24) | ((int)(g * 255) << 16) | ((int)(b * 255) << 8) | (int)(a * 255);
     }
 
     public void drawLight (Batch batch, Assets assets){
         if (glowSpot != null && isVisible()) {
-            glowSpot.lightColor = alphaScale(LIGHT_COLOR, getColor().a);
+            glowSpot.lightColor = pmaAlphaScale(LIGHT_COLOR, getColor().a);
             glowSpot.drawLight(batch, assets, getX(), getY());
         }
     }
 
     public void drawGlow (Batch batch, Assets assets){
         if (glowSpot != null && isVisible()){
-            glowSpot.glowColor = alphaScale(GLOW_COLOR, getColor().a);
+            glowSpot.glowColor = pmaAlphaScale(GLOW_COLOR, getColor().a);
             glowSpot.drawGlow(batch, assets, getX(), getY());
         }
     }

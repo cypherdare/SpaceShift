@@ -20,6 +20,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 
+//I didn't have time to implement save and continue, but this class is prepared for saving a game's progress to Json easily.
 /**
  * Serializable game instance. Contains everything that gets saved.
  */

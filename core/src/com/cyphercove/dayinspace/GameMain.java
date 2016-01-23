@@ -20,7 +20,8 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.utils.*;
-import com.badlogic.gdx.utils.viewport.*;
+import com.cyphercove.dayinspace.shared.Coordinate;
+import com.cyphercove.dayinspace.shared.FullScreenFader;
 
 public class GameMain extends ApplicationAdapter {
 
@@ -33,7 +34,7 @@ public class GameMain extends ApplicationAdapter {
 	}
 
 	public interface PlatformResolver {
-		public Coordinate getFullScreenResolution ();
+		Coordinate getFullScreenResolution ();
 	}
 
 	private State state = State.Title;
@@ -45,8 +46,6 @@ public class GameMain extends ApplicationAdapter {
 	MusicManager musicManager;
 	private Assets assets;
 	private SpriteBatch batch;
-	private Texture img;
-	private Viewport viewport;
 	private FullScreenFader stageTransitionFader;
 	private InputMultiplexer inputMultiplexer;
 	private State afterTransitionState;
@@ -109,9 +108,6 @@ public class GameMain extends ApplicationAdapter {
 		bookendScene = new BookendScene(this, assets, batch);
 		titleScreenScene = new TitleScreenScene(this, assets, batch);
 
-		img = new Texture("badlogic.jpg");
-		viewport = new ExtendViewport(240, 400);
-
 		stageTransitionFader = new FullScreenFader(0.4f, true, 1f, Color.BLACK);
 		disposables.add(stageTransitionFader);
 
@@ -122,10 +118,8 @@ public class GameMain extends ApplicationAdapter {
 
 	}
 
-
 	@Override
 	public void resize (int width, int height){
-		viewport.update(width, height, true);
 		gamePlayScene.resize(width, height);
 		bookendScene.resize(width, height);
 		titleScreenScene.resize(width, height);
@@ -136,8 +130,6 @@ public class GameMain extends ApplicationAdapter {
 
 		float dt = Math.min(0.05f, Gdx.graphics.getDeltaTime());
 		musicManager.update(dt);
-
-
 
 		boolean fadeInComplete = afterTransitionState == null && stageTransitionFader.isDone();
 

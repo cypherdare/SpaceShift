@@ -17,6 +17,7 @@
 package com.cyphercove.dayinspace;
 
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.shared.Coordinate;
 
 public enum EnemyType {
     Chupoof(1, 1, true, true, c(0, 1), c(1, 0)),

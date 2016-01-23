@@ -14,13 +14,11 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.loadinghelpers;
 
 import com.badlogic.gdx.utils.*;
 
-/**
- * For easy deserialization
- */
-public class SpriteData {
-    ObjectMap<String, Sprite.Parameters> data;
+public class SpeechData {
+    public ObjectMap<String, String[]> strings;
+    public ObjectMap<String, String[]> moods;
 }

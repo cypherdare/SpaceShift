@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.shared;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

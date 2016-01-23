@@ -24,6 +24,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.*;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.*;
+import com.cyphercove.dayinspace.shared.SpeakingLabel;
+import com.cyphercove.dayinspace.shared.SpriteWidget;
+
 import static com.cyphercove.dayinspace.Constants.*;
 
 public class BookendScene implements Disposable{
@@ -133,7 +136,7 @@ public class BookendScene implements Disposable{
             return;
         }
         table.row();
-        latestLabel = new SpeakingLabel(assets, currentSpeech[nextPageIndex], assets.skin, "default", Constants.NON_ROUND_DIALOGUE_SPEED);
+        latestLabel = assets.generateSpeakingLabel(currentSpeech[nextPageIndex], "default", Constants.NON_ROUND_DIALOGUE_SPEED);
         currentMood = currentMoods[nextPageIndex];
         faceWidget.set(currentMood.speakingSprite);
         latestLabel.setWrap(true);

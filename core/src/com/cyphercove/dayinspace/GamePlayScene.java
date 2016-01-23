@@ -26,64 +26,71 @@ import com.badlogic.gdx.scenes.scene2d.actions.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.*;
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.gameplayscene.rendering.*;
+import com.cyphercove.dayinspace.gameplayscene.simpledata.MusicTrack;
+import com.cyphercove.dayinspace.shared.Coordinate;
+import com.cyphercove.dayinspace.shared.PixelMultipleViewport;
+import com.cyphercove.dayinspace.shared.SpeakingLabel;
+import com.cyphercove.dayinspace.shared.SpriteWidget;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static com.cyphercove.dayinspace.Constants.*;
-import static com.cyphercove.dayinspace.EntityAppearanceAction.*;
-import static com.cyphercove.dayinspace.TargetAction.*;
-import static com.cyphercove.dayinspace.GamePlaySceneDamageAction.*;
+import static com.cyphercove.dayinspace.gameplayscene.rendering.EntityAppearanceAction.*;
+import static com.cyphercove.dayinspace.shared.TargetAction.*;
+import static com.cyphercove.dayinspace.gameplayscene.rendering.DamageAction.*;
 
 /**
  * Details pertinent to a round of the game on one board. Not saved.
+ *
+ * Handles the logic of a game round and also animating and rendering of moves.
  */
 public class GamePlayScene implements Disposable{
 
     private enum State {
-        Dialogue,
-        PlayerInput,
-        Animating
+        Dialogue, //face is talking, player input advances the dialogue
+        PlayerInput, //awaiting player input on player turn
+        Animating //computer's turn and animating moves
     }
 
     enum AirlockState {
         Static, Open, Closed
     }
 
-    ObjectSet<Disposable> disposables = new ObjectSet<>();
+    private final ObjectSet<Disposable> disposables = new ObjectSet<>();
 
-    GameMain main;
-    Assets assets;
-    SpriteBatch batch;
-    MusicManager musicManager;
+    private GameMain main;
+    private Assets assets;
+    private SpriteBatch batch;
+    private MusicManager musicManager;
 
-    int inputLock;
-    Stage stage;
-    Stage uiStage;
-    InputMultiplexer inputMultiplexer;
-    State state;
-    CurvedViewport viewport;
-    Camera camera;
-    FrameBuffer buffer;
-    FrameBuffer lightBuffer;
-    FrameBuffer gameSceneBuffer;
-    FrameBuffer postProcessBuffer;
-    TextureRegion bufferRegion;
-    ScrollPane dialogueScrollPane;
-    String[] currentDialogue;
-    FaceMood[] currentDialogueMoods;
-    FaceMood currentDialogueMood;
-    int currentDialogueNextIndex;
-    Table speechBoxTable;
-    SpriteWidget faceWidget;
-    float speechBoxX;
-    float speechBoxYShown;
-    float speechBoxYHidden;
-    boolean speechBoxActive;
-    SpeakingLabel dialogueLabel;
-    Button doneButton;
-    Table healthTable;
-    Image[] heartImages;
-    Image[] stepImages;
-    float damageAnimationIntensity;
+    private Stage stage;
+    private Stage uiStage;
+    private InputMultiplexer inputMultiplexer;
+    private State state;
+    private CurvedViewport viewport;
+    private Camera camera;
+    private FrameBuffer buffer;
+    private FrameBuffer lightBuffer;
+    private FrameBuffer gameSceneBuffer;
+    private FrameBuffer postProcessBuffer;
+    private TextureRegion bufferRegion;
+    private ScrollPane dialogueScrollPane;
+    private String[] currentDialogue;
+    private FaceMood[] currentDialogueMoods;
+    private FaceMood currentDialogueMood;
+    private int currentDialogueNextIndex;
+    private Table speechBoxTable;
+    private SpriteWidget faceWidget;
+    private float speechBoxX;
+    private float speechBoxYShown;
+    private float speechBoxYHidden;
+    private boolean speechBoxActive;
+    private SpeakingLabel dialogueLabel;
+    private Button doneButton;
+    private Table healthTable;
+    private Image[] heartImages;
+    private Image[] stepImages;
+    private float damageAnimationIntensity;
 
     boolean fxaa = true;
 
@@ -209,7 +216,7 @@ public class GamePlayScene implements Disposable{
         speechBoxTable.add(faceWidget).center();
 
         Table dialogueTable = new Table(assets.skin);
-        dialogueLabel = new SpeakingLabel(assets, "", assets.skin, "default", ROUND_DIALOGUE_SPEED);
+        dialogueLabel = assets.generateSpeakingLabel("", "default", ROUND_DIALOGUE_SPEED);
         dialogueLabel.setWrap(true);
         dialogueTable.add(dialogueLabel).width(DIALOGUE_LABEL_WIDTH);
         dialogueScrollPane = new ScrollPane(dialogueLabel);
@@ -331,7 +338,6 @@ public class GamePlayScene implements Disposable{
         speechBoxActive = false;
         speechBoxTable.setY(speechBoxYHidden);
         hasPickup = board.pickupType != null;
-        inputLock = 0;
         gameOver = false;
         showBrokenGlass = false;
         airlockSpriteTime = 0;
@@ -475,7 +481,7 @@ public class GamePlayScene implements Disposable{
         // 3) Front light sources ---------------------
         batch.begin();
         batch.setShader(null);
-        batch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
+        batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE);
         board.drawFrontLight(assets, batch, gravityLadderAnimationTime, switchPressed, secondarySwitchPressed);
         border.drawLight(batch, board.exitDoorY * SCALE, exitDoorOpenTime, board.entryDoorY * SCALE);
         for (TrapRepresentation trapRepresentation : trapRepresentations.values()){
@@ -547,6 +553,7 @@ public class GamePlayScene implements Disposable{
 
         // 7) Glow layer - additive blending, nearest, standard projection
         batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE);
+        batch.setShader(null);
         batch.setColor(Color.WHITE);
         for (TrapRepresentation trapRepresentation : trapRepresentations.values()){
             trapRepresentation.drawAdditiveGlow(batch, assets);
@@ -1432,6 +1439,14 @@ public class GamePlayScene implements Disposable{
             }
         }
     };
+
+    public float getDamageAnimationIntensity() {
+        return damageAnimationIntensity;
+    }
+
+    public void setDamageAnimationIntensity(float damageAnimationIntensity) {
+        this.damageAnimationIntensity = damageAnimationIntensity;
+    }
 
     public void dispose (){
         for (Disposable disposable : disposables) disposable.dispose();

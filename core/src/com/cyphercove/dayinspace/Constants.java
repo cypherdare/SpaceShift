@@ -23,7 +23,6 @@ public final class Constants {
     public static final int DEFAULT_WINDOW_WIDTH = 800;
     public static final int DEFAULT_WINDOW_HEIGHT = 450;
 
-
     /** Scale of graphics to board. */
     public static final int SCALE = 22;
 

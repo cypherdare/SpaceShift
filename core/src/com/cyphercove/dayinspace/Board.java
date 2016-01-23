@@ -19,6 +19,13 @@ package com.cyphercove.dayinspace;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.gameplayscene.rendering.GlowSpot;
+import com.cyphercove.dayinspace.gameplayscene.rendering.Tile;
+import com.cyphercove.dayinspace.gameplayscene.simpledata.MusicTrack;
+import com.cyphercove.dayinspace.gameplayscene.simpledata.PickupType;
+import com.cyphercove.dayinspace.gameplayscene.simpledata.SwitchAction;
+import com.cyphercove.dayinspace.shared.Coordinate;
+import com.cyphercove.dayinspace.shared.Sprite;
 
 import static com.cyphercove.dayinspace.Constants.SCALE;
 import static com.cyphercove.dayinspace.Util.*;

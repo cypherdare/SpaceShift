@@ -14,13 +14,19 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.utils.viewport.*;
 
+/**Designed specifically for the curved shader. The scene is rendered to a FrameBuffer with this viewport. Then the
+ * FrameBuffer's color texture is rendered to screen using the curved shader. The curved shader uses the UV coordinates
+ * of the corners of the FB texture as indicators of where in "world" space the edges of the screen align, where in this
+ * case "world" space describes the post-curved scene. "source" space is where the edges of the FrameBuffer's align
+ * to the initial rendering world space pre-curvation.
+ */
 public class CurvedViewport extends Viewport {
 
     private float worldAndSourceTop, worldBottom, cornerAngle, worldLeft, worldRight, sourceBottom;

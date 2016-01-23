@@ -14,9 +14,10 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.loadinghelpers;
 
 import com.badlogic.gdx.utils.ObjectMap;
+import com.cyphercove.dayinspace.gameplayscene.rendering.Tile;
 
 public class TileData {
     public ObjectMap<String, Tile.Parameters[]> data;

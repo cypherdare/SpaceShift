@@ -14,9 +14,12 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.Movement;
+import com.cyphercove.dayinspace.shared.Sprite;
+
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class PlayerRepresentation extends EntityActor {

@@ -14,11 +14,10 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.shared;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.*;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 
@@ -33,17 +32,23 @@ public class SpeakingLabel extends Label {
 
     Sound longSound, shortSound;
 
-    private static final float LONG_TEXT_SOUND_DURATION = 1.5f;
-    private static final float SHORT_TEXT_SOUND_MIN_DURATION = 0.4f;
-    private static final float LONG_TEXT_SOUND_MIN_DURATION = 1.0f;
+    private float longSoundDuration = 1.5f;
+    private float longSoundMinDuration = 1.0f;
+    private float shortSoundMinDuration = 0.4f;
 
-    public SpeakingLabel(Assets assets, CharSequence text, Skin skin, String styleName, float charsPerSecond) {
+    public SpeakingLabel(CharSequence initialText, Skin skin, String styleName, float charsPerSecond,
+                         Sound longSound, float longSoundDuration, float longSoundMinDuration, Sound shortSound,
+                         float shortSoundMinDuration) {
         super("", skin, styleName);
-        completeText = text;
+        completeText = initialText;
         this.charsPerSecond = charsPerSecond;
 
-        longSound = assets.sfx.get("text");
-        shortSound = assets.sfx.get("text_short");
+        this.longSound = longSound;
+        this.shortSound = shortSound;
+        this.longSoundDuration = longSoundDuration;
+        this.longSoundMinDuration = longSoundMinDuration;
+        this.shortSoundMinDuration = shortSoundMinDuration;
+
         speak(0);
     }
 
@@ -60,12 +65,12 @@ public class SpeakingLabel extends Label {
         addAction(speakAction);
 
         int count = 0;
-        while (duration > LONG_TEXT_SOUND_DURATION){
-            duration -= LONG_TEXT_SOUND_DURATION;
-            sound(longSound, delay + count++ * LONG_TEXT_SOUND_DURATION);
+        while (duration > longSoundDuration){
+            duration -= longSoundDuration;
+            sound(longSound, delay + count++ * longSoundDuration);
         }
-        if (duration >= SHORT_TEXT_SOUND_MIN_DURATION || count == 0)
-            sound(duration > LONG_TEXT_SOUND_MIN_DURATION ? longSound : shortSound, delay + count * LONG_TEXT_SOUND_DURATION);
+        if (duration >= shortSoundMinDuration || count == 0)
+            sound(duration > longSoundMinDuration ? longSound : shortSound, delay + count * longSoundDuration);
     }
 
     public boolean isSpeaking (){

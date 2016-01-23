@@ -14,21 +14,23 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.cyphercove.dayinspace.Assets;
+import com.cyphercove.dayinspace.Util;
 
 public class GlowSpot {
-    float x;
-    float y;
-    float width;
-    float height; //for spotlights, this is beam length
-    float angle; //angle in degrees if spotlight
-    boolean spotlight;
-    int glowColor; //pre-multiplied with standard shader, so alpha is opaqueness
-    int lightColor;
-    float glowSizeFraction;
+    public float x;
+    public float y;
+    public float width;
+    public float height; //for spotlights, this is beam length
+    public float angle; //angle in degrees if spotlight
+    public boolean spotlight;
+    public int glowColor; //pre-multiplied with standard shader, so alpha is opaqueness
+    public int lightColor;
+    public float glowSizeFraction;
 
     public void drawLight (Batch batch, Assets assets, float xOffset, float yOffset){
         TextureRegion region = spotlight ? assets.lightBeam : assets.lightPoint;

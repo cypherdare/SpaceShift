@@ -14,12 +14,13 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.shared;
 
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.*;
+import com.cyphercove.dayinspace.Util;
 
 /**
  * Ensures pixels are multipled by a whole number when rendered to screen, as long as the screen is large enough.

@@ -16,6 +16,8 @@
 
 package com.cyphercove.dayinspace;
 
+import com.cyphercove.dayinspace.shared.Coordinate;
+
 public abstract class GameObject {
 
     final Coordinate coord = new Coordinate();

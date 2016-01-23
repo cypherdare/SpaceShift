@@ -14,14 +14,15 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.scenes.scene2d.actions.*;
+import com.cyphercove.dayinspace.GamePlayScene;
 
-public class GamePlaySceneDamageAction extends FloatAction {
+public class DamageAction extends FloatAction {
 
-    public static GamePlaySceneDamageAction damage (GamePlayScene gamePlayScene, float endValue, float duration){
-        GamePlaySceneDamageAction action = Actions.action(GamePlaySceneDamageAction.class);
+    public static DamageAction damage (GamePlayScene gamePlayScene, float endValue, float duration){
+        DamageAction action = Actions.action(DamageAction.class);
         action.setGamePlayScene(gamePlayScene);
         action.setEnd(endValue);
         action.setDuration(duration);
@@ -35,12 +36,12 @@ public class GamePlaySceneDamageAction extends FloatAction {
     }
 
     protected void begin () {
-        setStart(gamePlayScene.damageAnimationIntensity);
+        setStart(gamePlayScene.getDamageAnimationIntensity());
         super.begin();
     }
     public boolean act (float delta){
         boolean done = super.act(delta);
-        gamePlayScene.damageAnimationIntensity = getValue();
+        gamePlayScene.setDamageAnimationIntensity(getValue());
         return done;
     }
 }

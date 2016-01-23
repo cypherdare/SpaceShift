@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.simpledata;
 
 public enum MusicTrack {
     Ambient, Intense, Grave

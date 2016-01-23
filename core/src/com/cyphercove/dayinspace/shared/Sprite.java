@@ -14,10 +14,13 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.shared;
 
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.Constants;
+import com.cyphercove.dayinspace.Util;
+import com.cyphercove.dayinspace.shared.Coordinate;
 
 public class Sprite {
 
@@ -25,11 +28,6 @@ public class Sprite {
     Animation animation;
     private int naturalWidth, naturalHeight;
     private int originX, originY;
-
-    public static final int DIR_UP = 12;
-    public static final int DIR_RIGHT = 3;
-    public static final int DIR_LEFT = 9;
-    public static final int DIR_DOWN = 6;
 
     public static class Parameters {
         String regionName;

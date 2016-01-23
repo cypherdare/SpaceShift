@@ -14,23 +14,26 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.cyphercove.dayinspace.Constants;
+import com.cyphercove.dayinspace.gameplayscene.rendering.GlowSpot;
+import com.cyphercove.dayinspace.shared.Sprite;
 
 public class Tile {
-    Sprite sprite;
-    Sprite spriteGravityOn;
-    GlowSpot glowSpot;
-    Sprite light;
-    boolean drawFlipped;
-    boolean isLadder;
+    public Sprite sprite;
+    public Sprite spriteGravityOn;
+    public GlowSpot glowSpot;
+    public Sprite light;
+    public boolean drawFlipped;
+    public boolean isLadder;
 
     public static class Parameters {
         Sprite.Parameters sprite;
         Sprite.Parameters light;
         GlowSpot glowSpot;
-        boolean includeFlipped; //not used internally by Tile. Convenient place to tell assets to create flipped duplicate
+        public boolean includeFlipped; //not used internally by Tile. Convenient place to tell assets to create flipped duplicate
         boolean isLadder;
     }
 

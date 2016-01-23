@@ -14,13 +14,15 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import com.cyphercove.dayinspace.Assets;
+import com.cyphercove.dayinspace.Board;
 
 import static com.cyphercove.dayinspace.Constants.*;
 
@@ -34,8 +36,8 @@ public class Border {
     private static final float DOOR_ANIMATION_GREEN_TIME = 0.05f;
 
     private Array<GlowSpot> beams;
-    GlowSpot exitDoorGlow;
-    GlowSpot entryDoorGlow;
+    private GlowSpot exitDoorGlow;
+    private GlowSpot entryDoorGlow;
 
     private static final int DOOR_LIGHT_ENTRY = 0x82c9ffff;
     private static final int DOOR_LIGHT_CLOSED = 0xff8282ff;

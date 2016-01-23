@@ -23,7 +23,7 @@ import java.util.Random;
 
 public final class Util {
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     private static final Random random = new Random();
 

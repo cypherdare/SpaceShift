@@ -14,10 +14,12 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.*;
+import com.cyphercove.dayinspace.Movement;
+import com.cyphercove.dayinspace.Util;
 
 public class EntityAppearanceAction extends Action {
 

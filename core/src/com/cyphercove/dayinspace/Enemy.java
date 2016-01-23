@@ -17,11 +17,12 @@
 package com.cyphercove.dayinspace;
 
 import com.badlogic.gdx.math.*;
+import com.cyphercove.dayinspace.shared.Coordinate;
 
 public class Enemy extends GameObject{
 
     final Coordinate startingCoord = new Coordinate();
-    EnemyType type;
+    public final EnemyType type;
     private boolean dead;
     private final Vector2 tmp2 = new Vector2();
     private int hp;
@@ -144,7 +145,6 @@ public class Enemy extends GameObject{
         other.dead = true;
         mergedSize += other.mergedSize;
     }
-
 
     public boolean stompable (){
         return true; //TODO switch on enemy type

@@ -14,9 +14,14 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.loadinghelpers;
 
-public enum PickupType {
-    Health,
-    StepBoost
+import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.shared.Sprite;
+
+/**
+ * For easy deserialization
+ */
+public class SpriteData {
+    public ObjectMap<String, Sprite.Parameters> data;
 }

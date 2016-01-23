@@ -14,13 +14,15 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.utils.*;
+import com.cyphercove.dayinspace.*;
+
 import static com.cyphercove.dayinspace.Constants.*;
 
 /**
@@ -29,16 +31,16 @@ import static com.cyphercove.dayinspace.Constants.*;
 public abstract class EntityActor extends Actor{
 
     private float spriteAge;
-    private Sprite sprite;
+    private com.cyphercove.dayinspace.shared.Sprite sprite;
     private String spriteName;
     protected boolean flipHorizontally;
     private boolean gravityOn;
-    private final ObjectMap<String, Sprite> library;
+    private final ObjectMap<String, com.cyphercove.dayinspace.shared.Sprite> library;
     private final Vector2 floatOffset = new Vector2();
     float floatTime;
     float floatPhase;
 
-    public EntityActor (ObjectMap<String, Sprite> library) {
+    public EntityActor (ObjectMap<String, com.cyphercove.dayinspace.shared.Sprite> library) {
         this.library = library;
         floatPhase = MathUtils.random() * MathUtils.PI2;
     }

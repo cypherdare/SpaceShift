@@ -14,49 +14,32 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.cyphercove.dayinspace;
+package com.cyphercove.dayinspace.gameplayscene.rendering;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class SpriteWidget extends Widget {
+/**
+ * Used for final boss. Draws a centered texture region.
+ */
+public class TextureRegionActor extends Actor {
+    TextureRegion region;
 
-    Sprite sprite;
-    float elapsed;
-
-    public SpriteWidget(Sprite sprite){
-        this.sprite = sprite;
+    public void setRegion (TextureRegion region){
+        this.region = region;
     }
 
-    public void set (Sprite sprite){
-        this.sprite = sprite;
-        elapsed = 0;
-    }
-
-    @Override
-    public void act (float delta){
-        elapsed += delta;
-    }
-
-    @Override
     public void draw (Batch batch, float parentAlpha) {
-        batch.setColor(getColor());
-        sprite.draw(batch, getX(), getY(), elapsed, false);
-    }
+        if (region == null)
+            return;
 
-    public float getPrefWidth () {
-        return sprite.getNaturalWidth();
-    }
+        batch.setColor(Color.WHITE);
 
-    public float getPrefHeight () {
-        return sprite.getNaturalHeight();
+        int width = (int)(region.getRegionWidth() * getScaleX());
+        int height = (int)(region.getRegionHeight() * getScaleY());
+
+        batch.draw(region, getX() - width / 2, getY() - height / 2, width, height);
     }
-//
-//    public float getMaxWidth () {
-//        return 0;
-//    }
-//
-//    public float getMaxHeight () {
-//        return 0;
-//    }
 }

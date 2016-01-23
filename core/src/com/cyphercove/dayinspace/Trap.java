@@ -18,14 +18,14 @@ package com.cyphercove.dayinspace;
 
 public class Trap extends GameObject {
 
-    int stepsToFire = 3; //just a constant for now.
+    private static final int STEPS_TO_FIRE = 3;
     int startingFireSteps;
 
     int fireSteps;
 
     public Trap (int x, int y, int initialPhase){
         super(x, y);
-        startingFireSteps = initialPhase % stepsToFire;
+        startingFireSteps = initialPhase % STEPS_TO_FIRE;
     }
 
     public void reset (){
@@ -33,7 +33,7 @@ public class Trap extends GameObject {
     }
 
     public void step (){
-        fireSteps = (fireSteps + 1) % stepsToFire;
+        fireSteps = (fireSteps + 1) % STEPS_TO_FIRE;
     }
 
     public boolean shouldFire (){
@@ -41,6 +41,6 @@ public class Trap extends GameObject {
     }
 
     public boolean shouldWarn (){
-        return fireSteps == stepsToFire - 1;
+        return fireSteps == STEPS_TO_FIRE - 1;
     }
 }
